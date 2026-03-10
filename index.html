@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>טבע שוק מבשרת ציון — אורגני, טרי, מקומי</title>
+  <meta name="description" content="טבע שוק — חנות טבע ומוצרים אורגניים במבשרת ציון. ירקות ופירות טריים, מוצרים ביולוגיים, שירות אישי. הזמינו אונליין דרך Wolt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:   #1B4332;
+      --green-mid:    #2D6A4F;
+      --green-light:  #52B788;
+      --green-pale:   #D8F3DC;
+      --cream:        #F8F4EF;
+      --cream-dark:   #EDE8E0;
+      --terra:        #C4603B;
+      --terra-light:  #E8A87C;
+      --gold:         #C9A84C;
+      --brown:        #2D1B0E;
+      --brown-mid:    #5C3D2E;
+      --text:         #1A1008;
+      --muted:        #6B5744;
+      --radius:       16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Heebo', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 72px;
+      background: rgba(27,67,50,0.96); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-logo {
+      font-size: 22px; font-weight: 900; color: #fff;
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .nav-logo .leaf { font-size: 26px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--green-light); }
+    .nav-cta {
+      background: var(--terra); color: #fff; padding: 10px 22px;
+      border-radius: 100px; font-weight: 700; font-size: 15px;
+      text-decoration: none; transition: background .2s, transform .15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-cta:hover { background: #a84e2d; transform: scale(1.03); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 32px 80px;
+      background:
+        linear-gradient(135deg, rgba(27,67,50,0.92) 0%, rgba(45,106,79,0.85) 50%, rgba(82,183,136,0.4) 100%),
+        radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.15) 0%, transparent 60%);
+      background-color: var(--green-deep);
+      position: relative; overflow: hidden;
+    }
+    .hero-leaves {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(circle at 15% 85%, rgba(82,183,136,0.2) 0%, transparent 40%),
+        radial-gradient(circle at 85% 15%, rgba(201,168,76,0.12) 0%, transparent 35%);
+    }
+    .hero-content { max-width: 680px; position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(82,183,136,0.2); border: 1px solid rgba(82,183,136,0.4);
+      border-radius: 100px; padding: 6px 18px; margin-bottom: 28px;
+      font-size: 13px; font-weight: 600; color: var(--green-light);
+    }
+    .hero-badge::before { content: '🌿'; font-size: 16px; }
+    h1 {
+      font-size: clamp(38px, 6vw, 68px); font-weight: 900;
+      line-height: 1.1; color: #fff; margin-bottom: 20px;
+    }
+    h1 em { font-style: normal; color: var(--terra-light); }
+    .hero-sub {
+      font-size: 18px; color: rgba(255,255,255,0.75); line-height: 1.7;
+      margin-bottom: 36px; max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--terra); color: #fff; padding: 16px 32px;
+      border-radius: 100px; font-weight: 700; font-size: 16px;
+      text-decoration: none; transition: all .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 8px 24px rgba(196,96,59,0.4);
+    }
+    .btn-primary:hover { background: #a84e2d; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(196,96,59,0.5); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.12); color: #fff; padding: 16px 32px;
+      border-radius: 100px; font-weight: 600; font-size: 16px;
+      text-decoration: none; border: 1px solid rgba(255,255,255,0.3);
+      transition: all .2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 52px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 32px; font-weight: 900; color: var(--terra-light); line-height: 1; }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar {
+      background: var(--green-deep); padding: 20px 32px;
+      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500;
+    }
+    .trust-item .icon { font-size: 22px; }
+    .trust-item .stars { color: #FFD700; font-size: 13px; letter-spacing: 1px; }
+
+    /* ─── SECTION COMMONS ─── */
+    .section { padding: 80px 32px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-label {
+      display: inline-block; background: var(--green-pale); color: var(--green-deep);
+      font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 16px;
+    }
+    h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 900; color: var(--green-deep); line-height: 1.2; }
+    .section-sub { font-size: 17px; color: var(--muted); margin-top: 12px; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+    /* ─── ABOUT ─── */
+    .about { background: #fff; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-img {
+      border-radius: 24px; overflow: hidden;
+      background: linear-gradient(135deg, var(--green-pale), var(--cream-dark));
+      aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
+      font-size: 100px;
+      box-shadow: 0 20px 60px rgba(27,67,50,0.15);
+    }
+    .about-text h2 { text-align: right; margin-bottom: 20px; }
+    .about-text p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .about-highlight {
+      background: var(--green-pale); border-right: 4px solid var(--green-light);
+      padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 24px 0;
+      font-size: 15px; color: var(--green-deep); font-weight: 600; line-height: 1.6;
+    }
+
+    /* ─── PRODUCTS ─── */
+    .products { background: var(--cream); }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+    .product-card {
+      background: #fff; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(27,67,50,0.08);
+      transition: transform .25s, box-shadow .25s;
+      cursor: pointer;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(27,67,50,0.15); }
+    .product-img {
+      height: 180px; display: flex; align-items: center; justify-content: center;
+      font-size: 72px; position: relative;
+    }
+    .product-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--terra); color: #fff;
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+    }
+    .product-info { padding: 18px 20px; }
+    .product-name { font-size: 17px; font-weight: 700; color: var(--green-deep); margin-bottom: 6px; }
+    .product-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ─── ORDER ONLINE ─── */
+    .order-section {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+      padding: 80px 32px; text-align: center; position: relative; overflow: hidden;
+    }
+    .order-section::before {
+      content: '🌿'; font-size: 200px; position: absolute;
+      top: -40px; left: -40px; opacity: 0.06; pointer-events: none;
+    }
+    .order-section::after {
+      content: '🍃'; font-size: 150px; position: absolute;
+      bottom: -30px; right: -20px; opacity: 0.08; pointer-events: none;
+    }
+    .order-section h2 { color: #fff; margin-bottom: 16px; }
+    .order-section p { color: rgba(255,255,255,0.75); font-size: 17px; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .wolt-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: #009DE0; color: #fff; padding: 18px 40px;
+      border-radius: 100px; font-weight: 800; font-size: 18px;
+      text-decoration: none; transition: all .2s;
+      box-shadow: 0 8px 32px rgba(0,157,224,0.4);
+    }
+    .wolt-btn:hover { background: #0085c0; transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,157,224,0.5); }
+    .wolt-stars { margin-top: 20px; color: rgba(255,255,255,0.7); font-size: 14px; }
+    .wolt-stars span { color: #FFD700; }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials { background: #fff; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .testimonial-card {
+      background: var(--cream); border-radius: 20px; padding: 28px;
+      border: 1px solid var(--cream-dark); position: relative;
+    }
+    .testimonial-card::before { content: '"'; font-size: 80px; color: var(--green-pale); position: absolute; top: 8px; right: 20px; line-height: 1; font-family: Georgia, serif; }
+    .t-text { font-size: 15px; color: var(--brown-mid); line-height: 1.7; margin-bottom: 20px; position: relative; z-index: 1; }
+    .t-author { display: flex; align-items: center; gap: 12px; }
+    .t-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--green-pale); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .t-name { font-weight: 700; font-size: 14px; color: var(--green-deep); }
+    .t-platform { font-size: 12px; color: var(--muted); }
+    .t-stars { color: #FFD700; font-size: 13px; margin-bottom: 12px; }
+
+    /* ─── PROCESS ─── */
+    .process { background: var(--green-pale); }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+    .process-step { text-align: center; padding: 32px 20px; background: #fff; border-radius: 20px; box-shadow: 0 4px 16px rgba(27,67,50,0.06); }
+    .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--green-deep); color: #fff; font-size: 22px; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .step-icon { font-size: 36px; margin-bottom: 12px; }
+    .step-title { font-size: 17px; font-weight: 700; color: var(--green-deep); margin-bottom: 8px; }
+    .step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ─── CONTACT ─── */
+    .contact { background: var(--cream); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--green-deep); margin-bottom: 24px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+    .contact-icon { width: 44px; height: 44px; background: var(--green-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .contact-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+    .contact-value { font-size: 15px; color: var(--text); font-weight: 600; margin-top: 2px; }
+    .contact-form { background: #fff; border-radius: 24px; padding: 36px; box-shadow: 0 8px 32px rgba(27,67,50,0.08); }
+    .contact-form h3 { font-size: 22px; font-weight: 800; color: var(--green-deep); margin-bottom: 24px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--brown-mid); margin-bottom: 6px; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 12px 16px; border: 2px solid var(--cream-dark);
+      border-radius: 12px; font-family: 'Heebo', sans-serif; font-size: 15px;
+      background: var(--cream); color: var(--text);
+      transition: border-color .2s; outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--green-light); }
+    .form-group textarea { height: 120px; resize: vertical; }
+    .form-submit {
+      width: 100%; background: var(--green-deep); color: #fff;
+      padding: 14px; border-radius: 100px; font-weight: 700; font-size: 16px;
+      border: none; cursor: pointer; transition: background .2s;
+      font-family: 'Heebo', sans-serif;
+    }
+    .form-submit:hover { background: var(--green-mid); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--green-deep); color: rgba(255,255,255,0.75);
+      padding: 48px 32px 28px; text-align: center;
+    }
+    .footer-logo { font-size: 28px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+    .footer-tagline { font-size: 14px; margin-bottom: 28px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .footer-links a:hover { color: var(--green-light); }
+    .footer-social { display: flex; justify-content: center; gap: 16px; margin-bottom: 32px; }
+    .social-btn {
+      width: 44px; height: 44px; background: rgba(255,255,255,0.1);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 20px; transition: background .2s;
+    }
+    .social-btn:hover { background: rgba(255,255,255,0.2); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 13px; color: rgba(255,255,255,0.4); }
+    .powered { color: var(--green-light); font-weight: 600; }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--terra) 0%, #a84e2d 100%);
+      padding: 60px 32px; text-align: center;
+    }
+    .cta-banner h2 { color: #fff; margin-bottom: 12px; }
+    .cta-banner p { color: rgba(255,255,255,0.85); font-size: 17px; margin-bottom: 28px; }
+    .cta-banner .btn-white {
+      background: #fff; color: var(--terra); padding: 16px 36px;
+      border-radius: 100px; font-weight: 800; font-size: 17px;
+      text-decoration: none; transition: all .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .cta-banner .btn-white:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(0,0,0,0.25); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 100px 20px 60px; }
+      h1 { font-size: 36px; }
+      .hero-stats { gap: 24px; justify-content: center; }
+      .trust-bar { gap: 20px; padding: 16px 20px; flex-direction: column; align-items: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .section { padding: 60px 20px; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+      .process-steps { grid-template-columns: 1fr; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="leaf">🌿</span>
+    <span>טבע שוק</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">עלינו</a></li>
+    <li><a href="#products">מוצרים</a></li>
+    <li><a href="#order">הזמנה</a></li>
+    <li><a href="#testimonials">ביקורות</a></li>
+    <li><a href="#contact">צרו קשר</a></li>
+  </ul>
+  <a href="https://wolt.com/he/isr/mevaseret-zion/restaurant/teva-shuk-mevaseret-zion" class="nav-cta" target="_blank">
+    🛒 הזמינו עכשיו
+  </a>
+  <div class="hamburger" onclick="this.parentElement.querySelector('.nav-links').style.display='flex'">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-leaves"></div>
+  <div class="hero-content">
+    <div class="hero-badge">חנות טבע ומוצרים אורגניים — מבשרת ציון</div>
+    <h1>
+      הטבע הכי טרי,<br>
+      ישירות <em>אליכם</em>
+    </h1>
+    <p class="hero-sub">
+      נורית ברוכים הבאים לטבע שוק — המקום שבו כל מוצר נבחר ביד אישית, הירקות מגיעים ישירות מהחקלאי, והשירות הוא כמו בבית.
+    </p>
+    <div class="hero-btns">
+      <a href="https://wolt.com/he/isr/mevaseret-zion/restaurant/teva-shuk-mevaseret-zion" class="btn-primary" target="_blank">
+        🚀 הזמינו דרך Wolt
+      </a>
+      <a href="#products" class="btn-secondary">
+        🌾 גלו את המוצרים
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">9.4</div>
+        <div class="stat-label">דירוג Wolt</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4.8★</div>
+        <div class="stat-label">Google Maps</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">שנות ניסיון</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">אורגני ומקומי</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST BAR ─── -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <span class="icon">🟡</span>
+    <div>
+      <div class="stars">★★★★★</div>
+      <div>Wolt 9.4 — ביקורות מעולות</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="icon">🗺️</span>
+    <div>
+      <div class="stars">★★★★★</div>
+      <div>Google 4.8 — מידע עסקי מלא</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="icon">🌿</span>
+    <div>מוצרים אורגניים וביולוגיים מאושרים</div>
+  </div>
+  <div class="trust-item">
+    <span class="icon">🏡</span>
+    <div>מבשרת ציון — לב האזור</div>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img fade-in">🌾</div>
+      <div class="about-text fade-in">
+        <div class="section-label">הסיפור שלנו</div>
+        <h2>נורית והאהבה לטבע</h2>
+        <p>
+          טבע שוק נוסד מתוך אמונה פשוטה: כל אחד מגיע לאכול אוכל אמיתי, טרי, ובריא. נורית בנתה כאן לא רק חנות — היא בנתה מקום שבו הקהילה מגיעה לקנות עם חיוך.
+        </p>
+        <p>
+          כל מוצר על המדף עבר בדיקה אישית. הירקות מגיעים ישירות מחקלאים מקומיים, המוצרים הביולוגיים נבחרים בקפידה, והשירות — כמו בבית.
+        </p>
+        <div class="about-highlight">
+          "אנחנו לא רק מוכרים מוצרים — אנחנו מחברים אנשים לטבע שלהם."
+          <br><strong>— נורית, מייסדת טבע שוק</strong>
+        </div>
+        <p>
+          עם ערוץ הזמנות אונליין דרך Wolt, כעת אפשר לקבל את כל האיכות הזו ישירות אליכם הביתה.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCTS ─── -->
+<section class="section products" id="products">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">הקטגוריות שלנו</div>
+      <h2>טרי, אורגני, מקומי</h2>
+      <p class="section-sub">מגוון עשיר של מוצרים טבעיים, כולם נבחרו ביד אישית</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card fade-in">
+        <div class="product-img" style="background: linear-gradient(135deg,#D8F3DC,#B7E4C7);">
+          🥦
+          <div class="product-badge">אורגני</div>
+        </div>
+        <div class="product-info">
+          <div class="product-name">ירקות אורגניים</div>
+          <div class="product-desc">ירקות טריים מחקלאים מקומיים, ללא חומרי הדברה, טריים כל יום</div>
+        </div>
+      </div>
+      <div class="product-card fade-in">
+        <div class="product-img" style="background: linear-gradient(135deg,#FFF3CD,#FFE08A);">
+          🍎
+          <div class="product-badge">עונתי</div>
+        </div>
+        <div class="product-info">
+          <div class="product-name">פירות עונתיים</div>
+          <div class="product-desc">פירות מתוקים ועסיסיים בעונתם — כי טבע יודע הכי טוב מתי</div>
+        </div>
+      </div>
+      <div class="product-card fade-in">
+        <div class="product-img" style="background: linear-gradient(135deg,#F8E8D8,#E8C4A0);">
+          🫙
+          <div class="product-badge">ביתי</div>
+        </div>
+        <div class="product-info">
+          <div class="product-name">מוצרי יסוד ביולוגיים</div>
+          <div class="product-desc">קטניות, דגנים, שמנים ועוד — כולם ביולוגיים ומאושרים</div>
+        </div>
+      </div>
+      <div class="product-card fade-in">
+        <div class="product-img" style="background: linear-gradient(135deg,#E8D5F5,#C5A8E0);">
+          🌺
+          <div class="product-badge">ייחודי</div>
+        </div>
+        <div class="product-info">
+          <div class="product-name">תוספי תזונה וצמחי מרפא</div>
+          <div class="product-desc">בחירה מיוחדת של תה, צמחים, ויטמינים ומוצרי בריאות</div>
+        </div>
+      </div>
+      <div class="product-card fade-in">
+        <div class="product-img" style="background: linear-gradient(135deg,#D8EFF8,#A8D8F0);">
+          🥛
+          <div class="product-badge">טרי</div>
+        </div>
+        <div class="product-info">
+          <div class="product-name">מוצרי חלב טבעיים</div>
+          <div class="product-desc">גבינות, יוגורט וחלב מחלב איכותי — ישירות מהחקלאי</div>
+        </div>
+      </div>
+      <div class="product-card fade-in">
+        <div class="product-img" style="background: linear-gradient(135deg,#FDE8D8,#F5C4A0);">
+          🍞
+          <div class="product-badge">מקומי</div>
+        </div>
+        <div class="product-info">
+          <div class="product-name">מאפים ולחמים מלאים</div>
+          <div class="product-desc">לחמים אורתנטיים, עוגות בריאות ומאפים מקמח מלא</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ORDER ONLINE ─── -->
+<section class="order-section" id="order">
+  <div class="container">
+    <div class="section-label" style="background:rgba(255,255,255,0.15);color:#fff;margin-bottom:16px;display:inline-block;">הזמינו מהבית</div>
+    <h2>כעת זמין ב-Wolt 🛵</h2>
+    <p>קבלו את כל מה שאהבתם בחנות — ישירות לדלת שלכם. מהיר, קל, ואותה איכות שהכרתם.</p>
+    <a href="https://wolt.com" class="wolt-btn" target="_blank">
+      🟡 הזמינו עכשיו דרך Wolt
+    </a>
+    <div class="wolt-stars">
+      <span>★★★★★</span> דירוג 9.4 · "ביקורות מעולות" · ערוץ מכירה משמעותי
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section class="section process">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">איך זה עובד</div>
+      <h2>מהבחירה עד הדלת</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step fade-in">
+        <div class="step-icon">📱</div>
+        <div class="step-num">1</div>
+        <div class="step-title">בחרו מוצרים</div>
+        <div class="step-desc">גלשו לאפליקציית Wolt ובחרו מהמבחר העשיר של טבע שוק</div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-icon">🌿</div>
+        <div class="step-num">2</div>
+        <div class="step-title">נכין בקפידה</div>
+        <div class="step-desc">נורית והצוות בוחרים כל מוצר ביד אישית עבורכם</div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-icon">🚴</div>
+        <div class="step-num">3</div>
+        <div class="step-title">נשלח מהר</div>
+        <div class="step-desc">שליח מגיע אליכם במהירות — טרי ואיכותי</div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-icon">😊</div>
+        <div class="step-num">4</div>
+        <div class="step-title">תהנו!</div>
+        <div class="step-desc">אוכל בריא וטעים בבית שלכם — כמו שטבע מתכוון</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">מה אומרים עלינו</div>
+      <h2>הלקוחות מדברים</h2>
+      <p class="section-sub">9.4 ב-Wolt ו-4.8 בגוגל — הם אמרו, לא אנחנו</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"החנות הכי מדהימה באזור. נורית יודעת כל לקוח לפי שם, המוצרים תמיד טריים ואיכותיים. אי אפשר לחפש יותר."</p>
+        <div class="t-author">
+          <div class="t-avatar">👩</div>
+          <div>
+            <div class="t-name">רחל מ.</div>
+            <div class="t-platform">ביקורת Google Maps</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"הזמנתי דרך Wolt ובאמת הופתעתי מהאיכות. ירקות טריים ממש, אריזה מושלמת. מהיום רק מטבע שוק!"</p>
+        <div class="t-author">
+          <div class="t-avatar">👨</div>
+          <div>
+            <div class="t-name">יואב ל.</div>
+            <div class="t-platform">ביקורת Wolt</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"שנים שאני לקוחה קבועה. נורית תמיד מציעה מוצרים חדשים, תמיד חייכת, תמיד יודעת בדיוק מה אני צריכה. זה לא עסק, זה בית."</p>
+        <div class="t-author">
+          <div class="t-avatar">👩</div>
+          <div>
+            <div class="t-name">מיכל ד.</div>
+            <div class="t-platform">לקוחה קבועה</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BANNER ─── -->
+<section class="cta-banner">
+  <h2>רוצים לקבל עדכונים ומבצעים?</h2>
+  <p>הצטרפו לקהילת טבע שוק ותהיו הראשונים לדעת על מוצרים חדשים ומבצעים בלעדיים</p>
+  <a href="#contact" class="btn-white">
+    📱 הצטרפו עכשיו
+  </a>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">בואו נדבר</div>
+      <h2>אנחנו כאן בשבילכם</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <h3>פרטי יצירת קשר</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">כתובת</div>
+            <div class="contact-value">מבשרת ציון, ישראל</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-label">אתר אינטרנט</div>
+            <div class="contact-value">teva-shuk.co.il</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📘</div>
+          <div>
+            <div class="contact-label">פייסבוק</div>
+            <div class="contact-value">facebook.com/tevashook</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📸</div>
+          <div>
+            <div class="contact-label">אינסטגרם</div>
+            <div class="contact-value">instagram.com/tevashook</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🟡</div>
+          <div>
+            <div class="contact-label">Wolt</div>
+            <div class="contact-value">דירוג 9.4 · הזמינו עכשיו</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form fade-in">
+        <h3>שלחו הודעה</h3>
+        <div class="form-group">
+          <label>שם מלא</label>
+          <input type="text" placeholder="השם שלכם" />
+        </div>
+        <div class="form-group">
+          <label>טלפון</label>
+          <input type="tel" placeholder="050-0000000" />
+        </div>
+        <div class="form-group">
+          <label>הודעה</label>
+          <textarea placeholder="כתבו לנו..."></textarea>
+        </div>
+        <button class="form-submit">📨 שלחו הודעה</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo">🌿 טבע שוק</div>
+  <div class="footer-tagline">אורגני · טרי · מקומי — מבשרת ציון</div>
+  <div class="footer-social">
+    <a class="social-btn" href="https://facebook.com/tevashook" target="_blank">📘</a>
+    <a class="social-btn" href="https://instagram.com/tevashook" target="_blank">📸</a>
+    <a class="social-btn" href="https://wolt.com" target="_blank">🟡</a>
+  </div>
+  <div class="footer-links">
+    <a href="#home">ראשי</a>
+    <a href="#about">עלינו</a>
+    <a href="#products">מוצרים</a>
+    <a href="#order">הזמנה</a>
+    <a href="#contact">צרו קשר</a>
+  </div>
+  <div class="footer-bottom">
+    © 2026 טבע שוק — כל הזכויות שמורות
+    <br>
+    <span class="powered">עוצב ופותח על ידי DreamNova Consult · dreamnovaultimate@gmail.com</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) { el.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Mobile nav
+  document.querySelector('.hamburger').addEventListener('click', () => {
+    const links = document.querySelector('.nav-links');
+    if (links.style.display === 'flex') {
+      links.style.display = 'none';
+    } else {
+      links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:72px;right:0;left:0;background:rgba(27,67,50,0.98);padding:24px;gap:16px;z-index:99;';
+    }
+  });
+</script>
+</body>
+</html>
